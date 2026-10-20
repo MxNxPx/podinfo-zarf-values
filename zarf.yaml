@@ -1,0 +1,40 @@
+kind: ZarfPackageConfig
+metadata:
+  name: podinfo-values-demo
+  version: 0.1.0
+  description: Podinfo demo of mapping Zarf Package Values to Helm chart values
+
+values:
+  files:
+    - package-values.yaml
+
+components:
+  - name: podinfo
+    required: true
+    charts:
+      - name: podinfo
+        releaseName: podinfo
+        namespace: podinfo
+        url: oci://ghcr.io/stefanprodan/charts/podinfo
+        version: 6.9.2
+        valuesFiles:
+          - helm-values.yaml
+        values:
+          - sourcePath: ".app.replicas"
+            targetPath: ".replicaCount"
+          - sourcePath: ".app.message"
+            targetPath: ".ui.message"
+          - sourcePath: ".app.color"
+            targetPath: ".ui.color"
+      - name: podinfo-uds-integration
+        releaseName: podinfo-uds-integration
+        namespace: podinfo
+        version: 0.1.0
+        localPath: charts/uds-integration
+        values:
+          - sourcePath: ".uds.enabled"
+            targetPath: ".enabled"
+          - sourcePath: ".app.host"
+            targetPath: ".host"
+    images:
+      - ghcr.io/stefanprodan/podinfo:6.9.2

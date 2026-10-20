@@ -1,0 +1,18 @@
+{{- if .Values.enabled }}
+apiVersion: uds.dev/v1alpha1
+kind: Package
+metadata:
+  name: podinfo
+  namespace: {{ .Release.Namespace }}
+spec:
+  network:
+    serviceMesh:
+      mode: ambient
+    expose:
+      - service: podinfo
+        selector:
+          app.kubernetes.io/name: podinfo
+        gateway: tenant
+        host: {{ .Values.host | quote }}
+        port: 9898
+{{- end }}

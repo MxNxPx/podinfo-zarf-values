@@ -1,0 +1,5 @@
+apiVersion: v2
+name: uds-integration
+description: Optional UDS Core integration for Podinfo
+type: application
+version: 0.1.0

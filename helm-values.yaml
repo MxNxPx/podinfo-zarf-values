@@ -1,0 +1,12 @@
+# Static chart-shaped settings, included at package creation.
+image:
+  repository: ghcr.io/stefanprodan/podinfo
+  tag: 6.9.2
+service:
+  type: ClusterIP
+hpa:
+  enabled: false
+redis:
+  enabled: false
+ingress:
+  enabled: false

@@ -1,0 +1,5 @@
+# Deploy-time inputs use the package structure, not the Helm structure.
+app:
+  replicas: 2
+  message: "Hello from the site override"
+  color: "#008060"

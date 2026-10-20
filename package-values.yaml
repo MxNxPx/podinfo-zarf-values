@@ -1,0 +1,9 @@
+# Package-shaped defaults, included at package creation.
+app:
+  replicas: 1
+  message: "Hello from Zarf defaults"
+  color: "#34577c"
+  host: podinfo
+
+uds:
+  enabled: true

@@ -1,0 +1,3 @@
+# Disable UDS integration on a cluster with Zarf but without UDS Core.
+uds:
+  enabled: false
